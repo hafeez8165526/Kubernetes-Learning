@@ -1,0 +1,13 @@
+1. {minReadySeconds} -> to the start the app it will take some time... it helps other pods/nodes to know the availability of pods
+
+2. {kubernetes.io/change-cause: "deploying v2"}  ->  helps adding custom tag to rollout labels, and helps rollout to a specfic version
+
+3. Deployment stratery ->  how you want your rollback to happen
+	1. recreate -> from v2->v1 then .. i want to delete all v2 pods and create v1 pods
+	2. rolling update -> let the v2 pods serve the load paralley create the v1 pods
+						once the v1 pods are ready.. switch the load and delete the v2 pods
+						
+		-> maxSurge: how many v2 pods you want to keep running until v1 is ready
+			1. 100% : let all v2 pods serve
+			2. 50% : if total 4.. let 2 pod server and delete 2 pods from v2
+		-> maxUnavailable: how many v2 pods you can allow to get deleted

@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp
+  annotations:
+    kubernetes.io/change-cause: "deploy v1"
+spec:
+  replicas: 3
+  minReadySeconds: 10
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+        - name: myapp
+          image: hafeez8165526/assignment:latest
+          env:
+            - name: spring.datasource.url
+              value: jdbc:mysql://10.244.2.16:3306/MEM
+          ports:
+            - containerPort: 8080

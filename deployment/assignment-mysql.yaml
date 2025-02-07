@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+        - name: assignment-mysql
+          image: mysql
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: "root"
+            - name: MYSQL_ROOT_USERNAME
+              value: "root"
+            - name: MYSQL_DATABASE
+              value: MEM
+          volumeMounts:
+            - name: init-volume-mapping
+              mountPath: C:\Users\hafee\Documents\workspace-spring-tool-suite-4-4.20.1.RELEASE\assignment-deploy-app\src\main\resources
+          ports:
+            - containerPort: 3306
+      volumes:
+        - name: init-volume-mapping
+          hostPath:
+            path: /docker-entrypoint-initdb.d

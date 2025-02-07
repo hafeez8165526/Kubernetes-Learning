@@ -1,0 +1,12 @@
+# Head
+| CMD                       | Description                                                                               |
+| ------------------------- | ----------------------------------------------------------------------------------------- |
+| kubectl                   | to interact with the api server                                                           |
+| kubectl develop -f {path} | develop contains all things in one place eg: ,pod template,replicaset,change cause config |
+|                           |                                                                                           |
+|                           |                                                                                           |
+|                           |                                                                                           |
+|                           |                                                                                           |
+|                           |                                                                                           |
+|                           |                                                                                           |
+|                           |                                                                                           |
